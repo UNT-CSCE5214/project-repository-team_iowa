@@ -1,22 +1,30 @@
 <html>
     <head>
-		<link rel="stylesheet" href="outputStyle.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/outputStyle.css') }}">
 	</head>
     <body>
-		<div id='score1'>
-			<p>Score 1: {{ score1 }}</p>
+		<div class="tr">
+			<div style="background-color:{{ score1_color }}" id='score1'>
+				<p>Score 1: {{ score1 }}</p>
+			</div>
 		</div>
-		<div id='score2'>
-			<p>Score 2: {{ score2 }}</p>
+		<div class="tr">
+			<div style="background-color:{{ score2_color }}" id='score2'>
+				<p>Score 2: {{ score2 }}</p>
+			</div>
 		</div>
-		<div id='score3'>
-			<p>Score 3: {{ score3 }}</p>
+		<div class="tr">
+			<div style="background-color:{{ score3_color }}" id='score3'>
+				<p>Score 3: {{ score3 }}</p>
+			</div>
 		</div>
-		<div id='score4'>
-			<p>Score 4: {{ score4 }}</p>
+		<div class="tr">
+			<div style="background-color:{{ score4_color }}" id='score4'>
+				<p>Score 4: {{ score4 }}</p>
+			</div>
 		</div>
 		<form action="http://127.0.0.1:5000">
-			<input style="margin:10px" type="submit" value="Back to Home" />
+			<input style="margin-top:10px" type="submit" value="Back to Home" />
 		</form>
     </body>
 </html>
