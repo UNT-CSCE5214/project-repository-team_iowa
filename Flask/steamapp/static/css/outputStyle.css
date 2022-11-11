@@ -1,6 +1,10 @@
 .tr {
 	display:table-row
 }
+
+.user-text{
+	width: 300px;
+}
 #score1 {
 	width: 100px;
 	height: 50px;
