@@ -1,19 +1,22 @@
 <html>
+    <head>
+		<link rel="stylesheet" href="outputStyle.css">
+	</head>
     <body>
-        <div>
+		<div id='score1'>
 			<p>Score 1: {{ score1 }}</p>
 		</div>
-		<div>
+		<div id='score2'>
 			<p>Score 2: {{ score2 }}</p>
 		</div>
-		<div>
+		<div id='score3'>
 			<p>Score 3: {{ score3 }}</p>
 		</div>
-		<div>
+		<div id='score4'>
 			<p>Score 4: {{ score4 }}</p>
 		</div>
 		<form action="http://127.0.0.1:5000">
-			<input type="submit" value="Back to Home" />
+			<input style="margin:10px" type="submit" value="Back to Home" />
 		</form>
     </body>
 </html>
