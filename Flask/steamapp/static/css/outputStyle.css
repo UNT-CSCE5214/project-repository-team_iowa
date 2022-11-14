@@ -1,14 +1,25 @@
+body {
+	background: linear-gradient(110deg, #3d7078 60%, #181e26 60%);
+}
+
+h3 {
+	color: #d6b97e;
+}
+
 .tr {
 	display:table-row
 }
 
 .user-text{
 	width: 300px;
+	padding-bottom: 25px;
 }
 #score1 {
 	width: 100px;
 	height: 50px;
 	display: table-cell;
+	border: 4px solid #181e26;
+	border-bottom: 0px;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -16,6 +27,8 @@
 	width: 100px;
 	height: 50px;
 	display: table-cell;
+	border: 4px solid #181e26;
+	border-bottom: 0px;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -23,6 +36,8 @@
 	width: 100px;
 	height: 50px;
 	display: table-cell;
+	border: 4px solid #181e26;
+	border-bottom: 0px;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -30,6 +45,8 @@
 	width: 100px;
 	height: 50px;
 	display: table-cell;
+	border: 4px solid #181e26;
+	!border-top: 2px;
 	text-align: center;
 	vertical-align: middle;
 }

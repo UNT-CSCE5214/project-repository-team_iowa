@@ -3,9 +3,9 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/outputStyle.css') }}">
 	</head>
     <body>
-		<h3>Your Review:</h3>
+		<h3 style="color: #d6b97e">Your Review:</h3>
 		<div class="user-text">
-			<p>{{ session['user_text'] }}</p>
+			<b style="color: #d6b97e">{{ session['user_text'] }}</b>
 		</div>
 		<div class="tr">
 			<div style="background-color:{{ scoreColor(session['score1']) }}" id='score1'>
