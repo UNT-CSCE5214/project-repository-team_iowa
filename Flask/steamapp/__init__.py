@@ -6,14 +6,8 @@ app = Flask(__name__)
 app.secret_key = 'dev'
 model1 = pickle.load(open('sentiment_analysis_best_model.pkl','rb'))
 
-def getScores(text):
-        # model outputs 0 or 1. Multiply by 2 and subtract 1 to normalize to range [-1, 1]
-        session['score1'] = (float(model1.predict(process_text1(text))[0])*2.0)-1.0
-        session['score2'] = -0.11
-        session['score3'] = 0.07
-        session['score4'] = 0.75
-
-def process_text1(content):
+# Haiyi's
+def process_text_1(content):
     sentence = re.sub('((www\.[^\s]+)|(https?://[^\s]+))','', content)
     sentence = re.sub('@[^\s]+','', sentence)
     sentence = sentence.lower().split()
@@ -23,7 +17,40 @@ def process_text1(content):
     sentence = re.sub('[^a-zA-Zа-яА-Я1-9]+', ' ', sentence)
     sentence = re.sub(' +',' ', sentence)
     #text = re.sub(' [\w] ', ' ', text)
-    return [sentence.strip()]
+    session['process_1_text'] = [sentence.strip()]
+
+# Andre's
+def process_text_2(text):
+    #\r and \n
+    session['process_2_text_1'] = text.replace("\r", " ")
+    session['process_2_text_1'] = session['process_2_text_1'].replace("\n", " ")
+    session['process_2_text_1'] = session['process_2_text_1'].replace("    ", " ")
+
+    # quotation marks
+    session['process_2_text_1'] = session['process_2_text_1'].replace('"', '')
+
+    # Lower casing all words so that upper case words (ex: at the begineeing of a sentence) 
+    # are read the same as lower case words
+    session['process_2_text_2'] = session['process_2_text_1'].lower()
+
+    # punctuation signs
+    punctuation_signs = list("?:!.,;")
+    session['process_2_text_3'] = session['process_2_text_2']
+
+    for i in punctuation_signs:
+        session['process_2_text_3'] = session['process_2_text_3'].replace(i, '')
+    
+    # Possesvive pronouns 
+    session['process_2_text_4'] = session['process_2_text_3'].replace("'s", "")
+
+def getScores(text):
+        process_text_2(text)
+        process_text_1(text)
+        # model outputs 0 or 1. Multiply by 2 and subtract 1 to normalize to range [-1, 1]
+        session['score1'] = (float(model1.predict(session['process_1_text'])[0])*2.0)-1.0
+        session['score2'] = -0.11
+        session['score3'] = 0.07
+        session['score4'] = 0.75
 
 @app.route('/success/')
 def success():
@@ -40,7 +67,6 @@ def home():
         if(not user_text):
             return redirect(url_for('noresponse'))
         session['user_text'] = user_text
-        session['processed_text'] = process_text1(user_text)
         getScores(user_text)
         return redirect(url_for('success'))
     #else:
