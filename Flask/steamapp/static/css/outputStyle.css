@@ -1,3 +1,7 @@
+html {
+	zoom: 200%;
+}
+
 body {
 	background: linear-gradient(110deg, #3d7078 60%, #181e26 60%);
 }

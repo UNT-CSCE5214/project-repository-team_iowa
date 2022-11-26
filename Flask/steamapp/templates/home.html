@@ -1,13 +1,18 @@
 <html>
+	<head>
+		<style>
+			html {zoom:200%;}
+		</style>
+	</head>
     <body style="background: linear-gradient(110deg, #3d7078 60%, #181e26 60%)">
-        <h1 style="padding-bottom:0px;margin-bottom:0px;color: #d6b97e">DoIHateThisGame.com</h1>
-        <h3 style="padding-top:0px;margin-top:0px;color: #d6b97e">We use math to calculate your feelings!</h3>
+		<h1 style="padding-bottom:0px;margin-bottom:0px;color: #d6b97e">DoIHateThisGame.com</h1>
+		<h3 style="padding-top:0px;padding-bottom:25px;margin-top:0px;color: #d6b97e">We use math to calculate your feelings!</h3>
 
-        <form action = "http://localhost:5000/home" method = "post">
-            <p style="color: #d6b97e">Please enter your review:</p>
-            <!--<p><input type = "text" name = "nm" /></p>-->
+		<form action = "/home" method = "post">
+			<p style="color: #d6b97e">Please enter a video game review:</p>
+			<!--<p><input type = "text" name = "nm" /></p>-->
 			<textarea style="border-color:#63b9c7;background-color:#181e26;color:#d6b97e" name="user_review" cols="40" rows="5"></textarea>
-            <p><input style="border-color:#181e26;background-color:#63b9c7;color:#181e26;" type="submit" value="Ask the robots how I feel"/></p>
-        </form>
+			<p><input style="border-color:#181e26;background-color:#63b9c7;color:#181e26;" type="submit" value="Ask the robots how I feel"/></p>
+		</form>
     </body>
 </html>

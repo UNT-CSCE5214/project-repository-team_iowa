@@ -7,31 +7,38 @@
 		<div class="user-text">
 			<b style="color: #d6b97e">{{ session['user_text'] }}</b>
 		</div>
-		<h3 style="color: #d6b97e">Cleaned Review::</h3>
+		<!--
+		<h3 style="color: #d6b97e">Cleaned Review:</h3>
 		<div class="user-text">
 			<b style="color: #d6b97e">{{ session['process_2_text_4'] }}</b>
 		</div>
+		-->
 		<div class="tr">
-			<div style="background-color:{{ scoreColor(session['score1']) }}" id='score1'>
-				<p>Score 1: {{ session['score1'] }}</p>
+			<!--model outputs 0 or 1. multiply by 2 and subtract 1 to project output to range [-1,1]-->
+			<p>AutoML</p>
+			<div style="background-color:{{ scoreColor(session['score1']*2-1) }}" id='score1'>
+				<p>{{ session['score1'] }}</p>
 			</div>
 		</div>
 		<div class="tr">
-			<div style="background-color:{{ scoreColor(session['score2']) }}" id='score2'>
-				<p>Score 2: {{ session['score2'] }}</p>
+			<p>Logistic Regression</p>
+			<div style="background-color:{{ scoreColor(session['score2']*2-1) }}" id='score2'>
+				<p>{{ session['score2'] }}</p>
 			</div>
 		</div>
 		<div class="tr">
-			<div style="background-color:{{ scoreColor(session['score3']) }}" id='score3'>
-				<p>Score 3: {{ session['score3'] }}</p>
+			<p>SVM</p>
+			<div style="background-color:{{ scoreColor(session['score3']*2-1) }}" id='score3'>
+				<p>{{ session['score3'] }}</p>
 			</div>
 		</div>
 		<div class="tr">
-			<div style="background-color:{{ scoreColor(session['score4']) }}" id='score4'>
-				<p>Score 4: {{ session['score4'] }}</p>
+			<p>Random Forest</p>
+			<div style="background-color:{{ scoreColor(session['score4']*2-1) }}" id='score4'>
+				<p>{{ session['score4'] }}</p>
 			</div>
 		</div>
-		<form action="http://127.0.0.1:5000">
+		<form action="/">
 			<input style="margin-top:10px" type="submit" value="Back to Home" />
 		</form>
     </body>
