@@ -1,6 +1,6 @@
 <html>
     <head>
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/outputStyle.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='outputStyle.css') }}">
 	</head>
     <body>
 		<h3 style="color: #d6b97e">Your Review:</h3>
@@ -13,30 +13,52 @@
 			<b style="color: #d6b97e">{{ session['process_2_text_4'] }}</b>
 		</div>
 		-->
-		<div class="tr">
-			<!--model outputs 0 or 1. multiply by 2 and subtract 1 to project output to range [-1,1]-->
-			<p>AutoML</p>
-			<div style="background-color:{{ scoreColor(session['score1']*2-1) }}" id='score1'>
-				<p>{{ session['score1'] }}</p>
-			</div>
-		</div>
-		<div class="tr">
-			<p>Logistic Regression</p>
-			<div style="background-color:{{ scoreColor(session['score2']*2-1) }}" id='score2'>
-				<p>{{ session['score2'] }}</p>
-			</div>
-		</div>
-		<div class="tr">
-			<p>SVM</p>
-			<div style="background-color:{{ scoreColor(session['score3']*2-1) }}" id='score3'>
-				<p>{{ session['score3'] }}</p>
-			</div>
-		</div>
-		<div class="tr">
-			<p>Random Forest</p>
-			<div style="background-color:{{ scoreColor(session['score4']*2-1) }}" id='score4'>
-				<p>{{ session['score4'] }}</p>
-			</div>
+		<div style="border: 1px solid #d6b97e; display: inline-block">
+		<table>
+			<tr>
+				<!--model outputs 0 or 1. multiply by 2 and subtract 1 to project output to range [-1,1]-->
+				<td class="model-name">
+					AutoML - Classification
+				</td>
+				<td style="background-color:{{ scoreColor(session['score1']) }}" id='score1' class='score'>
+					{{ session['score1'] }}
+				</td>
+			</tr>
+			<tr>
+				<td class="model-name">
+					AutoML - Sentiment Analysis
+				</td>
+				<td style="background-color:{{ scoreColor(session['score2']) }}" id='score2' class='score'>
+					{{ session['score2'] }}
+				</td>
+			</tr>
+			<tr>
+				<td class="model-name">
+					SVM
+				</td>
+				<td style="background-color:{{ scoreColor(session['score3']) }}" id='score3' class='score'>
+					{{ session['score3'] }}
+				</td>
+			</tr>
+			<tr>
+				<td class="model-name">
+					Random Forest
+				</td>
+				<td style="background-color:{{ scoreColor(session['score4']) }}" id='score4' class='score'>
+					{{ session['score4'] }}
+				</td>
+			</tr>
+			<!-- This would be part of the app, but google's free tier has memory limits
+			<tr>
+				<td class="model-name">
+					Classification - Keras/Tensorflow
+				</td>
+				<td style="background-color:{{ scoreColor(session['score5']) }}" id='score4' class='score'>
+					{{ session['score5'] }}
+				</td>
+			</tr>
+			-->
+		</table>
 		</div>
 		<form action="/">
 			<input style="margin-top:10px" type="submit" value="Back to Home" />
